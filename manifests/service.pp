@@ -4,7 +4,7 @@ class hornetq::service(
 
   validate_re($ensure, '^running$|^stopped$')
 
-  #service { 'hivemq':
+  #service { 'hornetq':
   #  ensure     => $ensure,
   #  hasstatus  => true,
   #  hasrestart => true
