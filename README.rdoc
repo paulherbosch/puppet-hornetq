@@ -1,0 +1,5 @@
+= puppet-hornetq module
+
+{<img src='https://codex.cegeka.be/jenkins/job/puppet-hornetq/badge/icon' />}[https://codex.cegeka.be/jenkins/job/puppet-hornetq/]
+
+This is the hornetq module.
