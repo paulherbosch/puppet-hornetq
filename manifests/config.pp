@@ -1,19 +1,19 @@
 class hornetq::config(
-  $ensure,
-  $version,
-  $user,
-  $install_type,
-  $config_folder,
-  $data_folder,
-  $run_folder,
-  $log_folder,
-  $java_home,
-  $jnp_host,
-  $jnp_port,
-  $rmi_port,
-  $min_mem,
-  $max_mem,
-  $debug,
+  $ensure = undef,
+  $version = undef,
+  $user = undef,
+  $install_type = undef,
+  $config_folder = undef,
+  $data_folder = undef,
+  $run_folder = undef,
+  $log_folder = undef,
+  $java_home = undef,
+  $jnp_host = undef,
+  $jnp_port = undef,
+  $rmi_port = undef,
+  $min_mem = undef,
+  $max_mem = undef,
+  $debug = undef
 ){
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
@@ -21,14 +21,14 @@ class hornetq::config(
   notice("hornetq_major_version = ${hornetq_major_version}")
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
 
-  file { ${config_folder} :
+  file { $config_folder :
     ensure => directory,
   }
 
   file { "${config_folder}/hornetq${package_version}-wrapper.conf":
     ensure  => $ensure,
     content => template("${module_name}/etc/hornetq/hornetq-wrapper.conf.erb"),
-    require => File[${config_folder}]
+    require => File[$config_folder]
   }
 
 }

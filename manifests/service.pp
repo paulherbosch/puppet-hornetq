@@ -1,9 +1,9 @@
 class hornetq::service(
-  $ensure => 'running',
-  $version,
-  $user,
-  $config_folder,
-  $run_folder,
+  $ensure = 'running',
+  $version = undef,
+  $user = undef,
+  $config_folder = undef,
+  $run_folder = undef,
 ){
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
