@@ -27,7 +27,7 @@ class hornetq::service(
   service { 'hornetq':
     ensure     => $ensure,
     hasstatus  => true,
-    hasrestart => true
+    hasrestart => true,
     require    => File['/var/run/hornetq','/var/log/hornetq',"/etc/init.d/hornetq${package_version}"]
   }
 
