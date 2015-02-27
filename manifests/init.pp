@@ -46,7 +46,6 @@ class hornetq(
     install_type  => $install_type,
     config_folder => $config_folder,
     data_folder   => $data_folder,
-    run_folder    => $run_folder,
     log_folder    => $log_folder,
     java_home     => $java_home,
     jnp_host      => $jnp_host,
@@ -58,8 +57,11 @@ class hornetq(
   }
 
   class { 'hornetq::service':
-    ensure  => $ensure,
-    version => $version
+    ensure        => $ensure,
+    version       => $version,
+    user          => $user,
+    config_folder => $config_folder,
+    run_folder    => $run_folder
   }
 
   Anchor['hornetq::begin'] -> Class['Hornetq::Package'] -> Class['Hornetq::Config'] ~> Class['Hornetq::Service'] -> Anchor['hornetq::end']
