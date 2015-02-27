@@ -14,12 +14,12 @@ class hornetq::service(
   $real_run_folder = "${run_folder}${package_version}"
 
   file { "/etc/init.d/hornetq${package_version}":
-    ensure  => $ensure,
+    ensure  => file,
     content => template("${module_name}/etc/init.d/hornetq.erb"),
   }
 
   file { [$real_run_folder,'/var/log/hornetq']:
-    ensure => 'present',
+    ensure => directory,
     owner  => $user,
     group  => $user
   }
@@ -27,7 +27,7 @@ class hornetq::service(
   service { 'hornetq':
     ensure     => $ensure,
     hasstatus  => true,
-    hasrestart => true
+    hasrestart => true,
     require    => File['/var/run/hornetq','/var/log/hornetq',"/etc/init.d/hornetq${package_version}"]
   }
 

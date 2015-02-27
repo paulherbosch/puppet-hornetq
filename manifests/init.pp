@@ -39,7 +39,7 @@ class hornetq(
     versionlock => $versionlock
   }
 
-  class { 'hornetq::config': 
+  class { 'hornetq::config':
     ensure        => $ensure,
     version       => $version,
     user          => $user,
