@@ -4,6 +4,7 @@ class hornetq::service(
   $user = undef,
   $config_folder = undef,
   $run_folder = undef,
+  $log_folder = undef
 ){
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
@@ -12,13 +13,14 @@ class hornetq::service(
   notice("hornetq_major_version = ${hornetq_major_version}")
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_run_folder = "${run_folder}${package_version}"
+  $real_log_folder = "${log_folder}${package_version}"
 
   file { "/etc/init.d/hornetq${package_version}":
     ensure  => file,
     content => template("${module_name}/etc/init.d/hornetq.erb"),
   }
 
-  file { [$real_run_folder,'/var/log/hornetq']:
+  file { [$real_run_folder,$real_log_folder]:
     ensure => directory,
     owner  => $user,
     group  => $user
@@ -28,7 +30,7 @@ class hornetq::service(
     ensure     => $ensure,
     hasstatus  => true,
     hasrestart => true,
-    require    => File['/var/run/hornetq','/var/log/hornetq',"/etc/init.d/hornetq${package_version}"]
+    require    => File[$real_run_folder,$real_log_folder,"/etc/init.d/hornetq${package_version}"]
   }
 
 }

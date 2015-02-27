@@ -35,9 +35,9 @@
 set.JAVA_HOME=<%= @java_home %>
 wrapper.java.command=%JAVA_HOME%/bin/java
 #
-set.default.APPLICATION_NAME=hornetq
+set.default.APPLICATION_NAME=hornetq<%= @package_version %>
 set.default.APPLICATION_FOLDER=/opt/%APPLICATION_NAME%
-set.default.LOG_FOLDER=<%= @log_folder %>
+set.default.LOG_FOLDER=<%= @real_log_folder %>
 
 #HornetQ specific configuration
 set.default.HORNETQ_BEANS=hornetq-beans.xml
@@ -209,7 +209,7 @@ wrapper.event.jvm_restart.email.body=The JVM was restarted.\n\nPlease check on i
 wrapper.name=%APPLICATION_NAME%
 
 # Display name of the service
-wrapper.displayname=HornetQ
+wrapper.displayname=HornetQ <%= @version %>
 
 # Description of the service
 wrapper.description=HornetQ asynchronous messaging system

@@ -24,11 +24,11 @@
 
 # Application
 APP_NAME="hornetq<%= @package_version %>"
-APP_LONG_NAME="HornetQ <%= @package_version %>"
+APP_LONG_NAME="HornetQ <%= @version %>"
 
 # Application folder
 APP_FOLDER="/opt/hornetq<%= @package_version %>"
-CONFIG_FOLDER="<%= @config_folder %>"
+CONFIG_FOLDER="<%= @real_config_folder %>"
 RUN_FOLDER="<%= @real_run_folder %>"
 
 # Wrapper
@@ -109,18 +109,18 @@ PLIST_DOMAIN=org.tanukisoftware.wrapper
 # The following two lines are used by the chkconfig command. Change as is
 #  appropriate for your application.  They should remain commented.
 # chkconfig: 2345 20 80
-# description: HornetQ
+# description: HornetQ <%= @version %>
 
 # Initialization block for the install_initd and remove_initd scripts used by
 #  SUSE linux distributions.
 ### BEGIN INIT INFO
-# Provides: hornetq
+# Provides: hornetq<%= @package_version %>
 # Required-Start: $local_fs $network $syslog
 # Should-Start:
 # Required-Stop:
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
-# Short-Description: HornetQ
+# Short-Description: HornetQ <%= @version %>
 # Description: @app.description@
 ### END INIT INFO
 
