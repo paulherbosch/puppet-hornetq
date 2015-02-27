@@ -61,7 +61,8 @@ class hornetq(
     version       => $version,
     user          => $user,
     config_folder => $config_folder,
-    run_folder    => $run_folder
+    run_folder    => $run_folder,
+    log_folder    => $log_folder
   }
 
   Anchor['hornetq::begin'] -> Class['Hornetq::Package'] -> Class['Hornetq::Config'] ~> Class['Hornetq::Service'] -> Anchor['hornetq::end']
