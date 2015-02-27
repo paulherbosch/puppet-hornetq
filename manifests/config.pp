@@ -5,7 +5,6 @@ class hornetq::config(
   $install_type = undef,
   $config_folder = undef,
   $data_folder = undef,
-  $run_folder = undef,
   $log_folder = undef,
   $java_home = undef,
   $jnp_host = undef,
