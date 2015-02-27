@@ -26,7 +26,7 @@ class hornetq::config(
   }
 
   file { "${config_folder}/hornetq${package_version}-wrapper.conf":
-    ensure  => $ensure,
+    ensure  => file,
     content => template("${module_name}/etc/hornetq/hornetq-wrapper.conf.erb"),
     require => File[$config_folder]
   }
