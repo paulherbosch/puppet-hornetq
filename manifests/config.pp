@@ -21,7 +21,7 @@ class hornetq::config(
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_log_folder = "${log_folder}${package_version}"
 
-  file { [$config_folder,$real_log_folder]:
+  file { [ $config_folder, $data_folder, $real_log_folder ]:
     ensure => directory,
     owner  => $user,
     group  => $user,
