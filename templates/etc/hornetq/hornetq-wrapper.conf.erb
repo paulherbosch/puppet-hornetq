@@ -83,6 +83,10 @@ wrapper.java.additional.9=-Ddata.dir=%HORNETQ_DATA_DIR%
 wrapper.java.additional.10=-Djnp.port=%HORNETQ_JNP_PORT%
 wrapper.java.additional.11=-Djnp.rmiPort=%HORNETQ_RMI_PORT%
 wrapper.java.additional.12=-Djnp.host=%HORNETQ_JNP_HOST%
+wrapper.java.additional.13=-Dcom.sun.management.jmxremote.port=8585
+wrapper.java.additional.14=-Dcom.sun.management.jmxremote.authenticate=false
+wrapper.java.additional.15=-Dcom.sun.management.jmxremote.ssl=false
+wrapper.java.additional.16=-Djava.rmi.server.hostname=<%= @fqdn %>
 
 # Initial Java Heap Size (in MB)
 wrapper.java.initmemory=<%= @min_mem %>
