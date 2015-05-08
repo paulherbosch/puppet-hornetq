@@ -13,7 +13,8 @@
 class hornetq(
   $version = undef,
   $versionlock = false,
-  $ensure = 'running',
+  $service_state = 'running',
+  $service_enable = true,
   $user = 'hornetq',
   $install_type = 'stand-alone/non-clustered',
   $config_folder = '/etc/hornetq',
@@ -40,7 +41,6 @@ class hornetq(
   }
 
   class { 'hornetq::config':
-    ensure        => $ensure,
     version       => $version,
     user          => $user,
     install_type  => $install_type,
@@ -57,8 +57,9 @@ class hornetq(
   }
 
   class { 'hornetq::service':
-    ensure        => $ensure,
+    ensure        => $service_state,
     version       => $version,
+    enable        => $service_enable,
     user          => $user,
     config_folder => $config_folder,
     run_folder    => $run_folder,
