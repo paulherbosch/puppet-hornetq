@@ -1,5 +1,4 @@
 class hornetq::config(
-  $ensure = undef,
   $version = undef,
   $user = undef,
   $install_type = undef,
