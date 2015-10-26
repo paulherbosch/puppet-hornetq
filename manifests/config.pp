@@ -11,7 +11,8 @@ class hornetq::config(
   $rmi_port = undef,
   $min_mem = undef,
   $max_mem = undef,
-  $debug = undef
+  $debug = undef,
+  $pingtimeout = 30
 ){
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
