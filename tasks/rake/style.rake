@@ -27,9 +27,24 @@ task :style do
   FileList['**/*.pp'].each do |puppet_file|
     puts "Evaluating code style for #{puppet_file}"
     linter.file = puppet_file
+    linter.configuration.error_level = 'error'
     linter.run
+    linter_problems = linter.print_problems
+    if linter_problems.count > 0
+      linter_problems.each do | linter_problem |
+        puts "#{linter_problem[:KIND]}: #{linter_problem[:message]} on line #{linter_problem[:line]}"
+      end
+    else
+    end
     success = false if linter.errors?
   end
+
+#  FileList['**/*.pp'].each do |puppet_file|
+#    puts "Evaluating code style for #{puppet_file}"
+#    linter.file = puppet_file
+#    linter.run
+#    success = false if linter.errors?
+#  end
 
   abort "Checking puppet module code style FAILED" if success.is_a?(FalseClass)
 end
