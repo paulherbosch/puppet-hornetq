@@ -1,5 +1,4 @@
 class hornetq::config(
-  $ensure = undef,
   $version = undef,
   $user = undef,
   $install_type = undef,
@@ -12,7 +11,8 @@ class hornetq::config(
   $rmi_port = undef,
   $min_mem = undef,
   $max_mem = undef,
-  $debug = undef
+  $debug = undef,
+  $ping_timeout = undef
 ){
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
@@ -21,7 +21,7 @@ class hornetq::config(
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_log_folder = "${log_folder}${package_version}"
 
-  file { [$config_folder,$real_log_folder]:
+  file { [ $config_folder, $data_folder, $real_log_folder ]:
     ensure => directory,
     owner  => $user,
     group  => $user,

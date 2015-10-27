@@ -13,7 +13,8 @@
 class hornetq(
   $version = undef,
   $versionlock = false,
-  $ensure = 'running',
+  $service_state = 'running',
+  $service_enable = true,
   $user = 'hornetq',
   $install_type = 'stand-alone/non-clustered',
   $config_folder = '/etc/hornetq',
@@ -27,6 +28,7 @@ class hornetq(
   $min_mem = '512',
   $max_mem = '1024',
   $debug = 'FALSE',
+  $ping_timeout = '30'
 ){
 
   include stdlib
@@ -40,7 +42,6 @@ class hornetq(
   }
 
   class { 'hornetq::config':
-    ensure        => $ensure,
     version       => $version,
     user          => $user,
     install_type  => $install_type,
@@ -53,12 +54,14 @@ class hornetq(
     rmi_port      => $rmi_port,
     min_mem       => $min_mem,
     max_mem       => $max_mem,
-    debug         => $debug
+    debug         => $debug,
+    ping_timeout   => $ping_timeout
   }
 
   class { 'hornetq::service':
-    ensure        => $ensure,
+    ensure        => $service_state,
     version       => $version,
+    enable        => $service_enable,
     user          => $user,
     config_folder => $config_folder,
     run_folder    => $run_folder,
