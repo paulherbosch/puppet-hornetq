@@ -28,7 +28,7 @@ class hornetq(
   $min_mem = '512',
   $max_mem = '1024',
   $debug = 'FALSE',
-  $ping_timeout = '30'
+  $ping_timeout = '30',
   $log_level = 'INFO'
 ){
 
@@ -56,7 +56,7 @@ class hornetq(
     min_mem       => $min_mem,
     max_mem       => $max_mem,
     debug         => $debug,
-    ping_timeout  => $ping_timeout
+    ping_timeout  => $ping_timeout,
     log_level     => $log_level
   }
 
