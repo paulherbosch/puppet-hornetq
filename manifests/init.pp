@@ -29,7 +29,8 @@ class hornetq(
   $max_mem = '1024',
   $debug = 'FALSE',
   $ping_timeout = '30',
-  $log_level = 'INFO'
+  $log_level = 'INFO',
+  $ping_timeout_action = 'RESTART'
 ){
 
   include stdlib
@@ -57,7 +58,8 @@ class hornetq(
     max_mem       => $max_mem,
     debug         => $debug,
     ping_timeout  => $ping_timeout,
-    log_level     => $log_level
+    log_level     => $log_level,
+    ping_timeout_action => ping_timeout_action
   }
 
   class { 'hornetq::service':
