@@ -44,22 +44,22 @@ class hornetq(
   }
 
   class { 'hornetq::config':
-    version       => $version,
-    user          => $user,
-    install_type  => $install_type,
-    config_folder => $config_folder,
-    data_folder   => $data_folder,
-    log_folder    => $log_folder,
-    java_home     => $java_home,
-    jnp_host      => $jnp_host,
-    jnp_port      => $jnp_port,
-    rmi_port      => $rmi_port,
-    min_mem       => $min_mem,
-    max_mem       => $max_mem,
-    debug         => $debug,
-    ping_timeout  => $ping_timeout,
-    log_level     => $log_level,
-    ping_timeout_action => ping_timeout_action
+    version             => $version,
+    user                => $user,
+    install_type        => $install_type,
+    config_folder       => $config_folder,
+    data_folder         => $data_folder,
+    log_folder          => $log_folder,
+    java_home           => $java_home,
+    jnp_host            => $jnp_host,
+    jnp_port            => $jnp_port,
+    rmi_port            => $rmi_port,
+    min_mem             => $min_mem,
+    max_mem             => $max_mem,
+    debug               => $debug,
+    ping_timeout        => $ping_timeout,
+    log_level           => $log_level,
+    ping_timeout_action => $ping_timeout_action
   }
 
   class { 'hornetq::service':
