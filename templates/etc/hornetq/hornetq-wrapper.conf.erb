@@ -230,3 +230,6 @@ wrapper.ntservice.interactive=false
 # Time to wait until Tanuki kills the JVM process
 # See https://confluence.atlassian.com/pages/viewpage.action?pageId=186712400
 wrapper.ping.timeout=<%= @ping_timeout %>
+# Tanuki default is RESTART
+# See https://wrapper.tanukisoftware.com/doc/english/prop-ping-timeout.html#action for more info
+wrapper.ping.timeout.action=<%= @ping_timeout_action %>
