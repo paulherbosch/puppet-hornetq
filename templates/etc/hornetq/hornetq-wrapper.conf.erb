@@ -244,5 +244,5 @@ wrapper.ntservice.interactive=false
 # See https://confluence.atlassian.com/pages/viewpage.action?pageId=186712400
 wrapper.ping.timeout=<%= @ping_timeout %>
 
-# Action performed when a ping timeout takes place. DEBUG, DUMP, GC, RESTART, SHUTDOWN, PAUSE, RESUME, SUCCESS, NONE
-wrapper.ping.timeout.action=RESTART
+# Action performed when a ping timeout takes place. RESTART (default), DEBUG, DUMP, GC, SHUTDOWN, PAUSE, RESUME, SUCCESS, NONE
+wrapper.ping.timeout.action=<%= @ping_timeout_action %>
