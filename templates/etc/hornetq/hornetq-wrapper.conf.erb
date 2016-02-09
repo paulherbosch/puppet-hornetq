@@ -23,16 +23,26 @@
 
 # The following property will output information about which License Key(s)
 #  are being found, and can aid in resolving any licensing problems.
-##wrapper.license.debug=TRUE
+#wrapper.license.debug=TRUE
+
+#********************************************************************
+# Wrapper Localization
+#********************************************************************
+# Specify the locale which the Wrapper should use.  By default the system
+#  locale is used.
+#wrapper.lang=en_US # en_US or ja_JP
+
+# Specify the location of the Wrapper's language resources.  If these are
+#  missing, the Wrapper will default to the en_US locale.
+wrapper.lang.folder=../lang
 
 #********************************************************************
 # Wrapper Java Properties
 #********************************************************************
 # Java Application
-#  Locate the java binary on the system PATH:
-#wrapper.java.command=java
 #  Specify a specific java binary:
 set.JAVA_HOME=<%= @java_home %>
+#  Locate the java binary on JAVA_HOME:
 wrapper.java.command=%JAVA_HOME%/bin/java
 #
 set.default.APPLICATION_NAME=hornetq<%= @package_version %>
@@ -150,6 +160,9 @@ wrapper.console.title=HornetQ
 # Detect DeadLocked Threads in the JVM. (Requires Standard Edition)
 wrapper.check.deadlock=TRUE
 wrapper.check.deadlock.interval=60
+wrapper.max_failed_invocations=99
+wrapper.console.fatal_to_stderr=FALSE
+wrapper.console.error_to_stderr=FALSE
 wrapper.check.deadlock.action=RESTART
 wrapper.check.deadlock.output=FULL
 
@@ -230,6 +243,6 @@ wrapper.ntservice.interactive=false
 # Time to wait until Tanuki kills the JVM process
 # See https://confluence.atlassian.com/pages/viewpage.action?pageId=186712400
 wrapper.ping.timeout=<%= @ping_timeout %>
-# Tanuki default is RESTART
-# See https://wrapper.tanukisoftware.com/doc/english/prop-ping-timeout.html#action for more info
+
+# Action performed when a ping timeout takes place. RESTART (default), DEBUG, DUMP, GC, SHUTDOWN, PAUSE, RESUME, SUCCESS, NONE
 wrapper.ping.timeout.action=<%= @ping_timeout_action %>
