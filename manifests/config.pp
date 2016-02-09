@@ -37,7 +37,7 @@ class hornetq::config(
 
   file { "/opt/hornetq${package_version}/config/${install_type}/logging.properties":
     ensure  => file,
-    content => template("${module_name}/"),
+    content => template("${module_name}/opt/hornetq${package_version}/config/${install_type}/logging.properties.erb"),
   }
 
 }
