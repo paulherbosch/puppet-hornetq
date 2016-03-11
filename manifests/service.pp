@@ -14,10 +14,12 @@ class hornetq::service(
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_run_folder = "${run_folder}${package_version}"
 
-  file { "/etc/init.d/hornetq${package_version}":
-    ensure  => file,
-    mode    => '0755',
-    content => template("${module_name}/etc/init.d/hornetq.erb"),
+  if ($operatingsystemmajrelease < 7) {
+    file { "/etc/init.d/hornetq${package_version}":
+      ensure  => file,
+      mode    => '0755',
+      content => template("${module_name}/etc/init.d/hornetq.erb"),
+    }
   }
 
   file { [$real_run_folder]:
