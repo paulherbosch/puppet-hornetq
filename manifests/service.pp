@@ -30,12 +30,22 @@ class hornetq::service(
 
   case $ensure {
     'running', 'stopped': {
-      service { "hornetq${package_version}":
-        ensure     => $ensure,
-        enable     => $enable,
-        hasstatus  => true,
-        hasrestart => true,
-        require    => File[$real_run_folder, "/etc/init.d/hornetq${package_version}"]
+      if ($operatingsystemmajrelease < 7) {
+        service { "hornetq${package_version}":
+          ensure     => $ensure,
+          enable     => $enable,
+          hasstatus  => true,
+          hasrestart => true,
+          require    => File[$real_run_folder, "/etc/init.d/hornetq${package_version}"]
+        }
+      } else {
+        service { "hornetq${package_version}":
+          ensure     => $ensure,
+          enable     => $enable,
+          hasstatus  => true,
+          hasrestart => true,
+          require    => File[$real_run_folder]
+        }
       }
     }
     'unmanaged': {
