@@ -10,7 +10,6 @@ class hornetq::service(
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
   validate_re($ensure, '^running$|^stopped$|^unmanaged$')
   $hornetq_major_version = regsubst($version, '^(\d+\.\d+).*','\1')
-  notice("hornetq_major_version = ${hornetq_major_version}")
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_run_folder = "${run_folder}${package_version}"
 
@@ -48,9 +47,7 @@ class hornetq::service(
         }
       }
     }
-    'unmanaged': {
-      notice('Class[hornetq::service]: service is currently not being managed')
-    }
+    'unmanaged': {}
     default: {
       fail('Class[hornetq::service]: parameter ensure must be running, stopped or unmanaged')
     }
