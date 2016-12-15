@@ -7,7 +7,6 @@ class hornetq::package(
   validate_bool($versionlock)
 
   $hornetq_major_version = regsubst($version, '^(\d+\.\d+).*','\1')
-  notice("hornetq_major_version = ${hornetq_major_version}")
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
 
   package { "hornetq${package_version}":

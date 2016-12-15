@@ -19,7 +19,6 @@ class hornetq::config(
 
   validate_re($version, '^[~+._0-9a-zA-Z:-]+$')
   $hornetq_major_version = regsubst($version, '^(\d+\.\d+).*','\1')
-  notice("hornetq_major_version = ${hornetq_major_version}")
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_log_folder = "${log_folder}${package_version}"
 
